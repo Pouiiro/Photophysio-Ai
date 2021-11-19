@@ -1,3 +1,4 @@
+// import LoadingPage from 'Pages/Loading'
 import React from 'react'
 import AppProvider from './Providers/AppContext'
 import Routes from './Routes'

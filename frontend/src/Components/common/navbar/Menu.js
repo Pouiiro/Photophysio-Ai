@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-
 const Menu = () => {
   return (
     <ul>
@@ -11,6 +10,9 @@ const Menu = () => {
       </li>
       <li>
         <NavLink to='/test'>Test</NavLink>
+      </li>
+      <li>
+        <NavLink to='/Loading'>Loading</NavLink>
       </li>
     </ul>
   )
