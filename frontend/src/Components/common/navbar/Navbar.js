@@ -1,20 +1,16 @@
-import ReactDom from 'react-dom'
-import React, { Component } from 'react'
-import Menu from './Menu'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
-function HeaderArtur() {
+import styled from 'styled-components'
+import { AppContext } from 'Providers/AppContext'
+import FadeIn from 'react-fade-in'
+
+const Header = () => {
+  const { setLoading, setWstatus } = useContext(AppContext)
   return (
-    <Navbar>
-      <Menu />
-    </Navbar>
-  )
-}
-class Navbar extends Component {
-  render() {
-    return (
-      <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+    <FadeIn>
+      <NavMy className='navbar navbar-expand-lg navbar-light '>
         <div className='container-fluid'>
-          <a className='navbar-brand' href='#'>
+          <a className='navbar-brand' href='/'>
             PhysioPhotoAI
           </a>
           <button
@@ -30,32 +26,68 @@ class Navbar extends Component {
           </button>
           <div className='collapse navbar-collapse' id='navbarNavDropdown'>
             <ul className='navbar-nav'>
-              <NavLink to='/'>
-                <li className='nav-item'>
-                  <a className='nav-link active' aria-current='page' href='#'>
-                    Home
-                  </a>
-                </li>
-              </NavLink>
-              <NavLink to='./Physiotherapist'>
-                <li className='nav-item'>
-                  <a className='nav-link' href='#'>
-                    Physiotherapist
-                  </a>
-                </li>
-              </NavLink>
-              <NavLink to='./Patient'>
-                <li className='nav-item'>
-                  <a className='nav-link' href='#'>
-                    Patient
-                  </a>
-                </li>
-              </NavLink>
+              <li className='nav-item'>
+                <NavLink
+                  activeClassName='selected'
+                  exact={true}
+                  to='/'
+                  onClick={() => {
+                    setWstatus('home')
+                    setLoading(true)
+                  }}
+                >
+                  Home
+                </NavLink>
+              </li>
+
+              <li className='nav-item'>
+                <NavLink
+                  to='/Physiotherapist'
+                  activeClassName='selected'
+                  onClick={() => {
+                    setWstatus('physio')
+                    setLoading(true)
+                  }}
+                >
+                  Physiotherapist
+                </NavLink>
+              </li>
+              <li className='nav-item'>
+                <NavLink
+                  to='/Patient'
+                  activeClassName='selected'
+                  onClick={() => {
+                    setWstatus('patient')
+                    setLoading(true)
+                  }}
+                >
+                  Patient
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>
-      </nav>
-    )
-  }
+      </NavMy>
+    </FadeIn>
+  )
 }
-export default HeaderArtur
+
+const NavMy = styled.nav`
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  .selected {
+    font-weight: bold;
+  }
+  .navbar-brand {
+    font-family: 'Roboto', sans-serif;
+    font-size: 27px;
+    padding: 0px;
+    margin: 0px;
+    font-weight: 400;
+  }
+  border-bottom: 1px solid black;
+  border-width: thin;
+`
+export default Header

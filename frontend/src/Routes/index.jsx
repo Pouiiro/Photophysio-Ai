@@ -1,21 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
-// import Header from 'Components/common/navbar/NavHeader'
-import Home from '../Pages/Home'
-import Test from '../Pages/Patient'
-import Physio from '../Pages/Physiotherapist'
-import LoadingPage from 'Pages/LoadingPage'
-//import ReactNavbar from 'Components/common/navbar/ReactNavbar'
-import HeaderArtur from 'Components/common/navbar/Navbar'
+import Home from 'Pages/Home'
+import Patient from 'Pages/Patient'
+import Physio from 'Pages/Physiotherapist'
+import { AppContext } from 'Providers/AppContext'
+import Header from 'Components/common/navbar/Navbar'
+import LoadingComp from 'Components/loader/loading'
 
-const Routes = () => (
-  <BrowserRouter>
-    <HeaderArtur />
-    <Route path='/' exact component={Home} />
-    <Route path='/Patient' component={Test} />
-    <Route path='/Physiotherapist' component={Physio} />
-    <Route path='/LoadingPage' component={LoadingPage} />
-    {/* <Header /> this is the navigation bar} */}
-  </BrowserRouter>
-)
+const Routes = () => {
+  const { Loading } = useContext(AppContext)
+
+  return Loading ? (
+    <LoadingComp />
+  ) : (
+    <BrowserRouter>
+      <Header />
+      <Route path='/' exact component={Home} />
+      <Route path='/Patient' component={Patient} />
+      <Route path='/Physiotherapist' component={Physio} />
+    </BrowserRouter>
+  )
+}
 export default Routes

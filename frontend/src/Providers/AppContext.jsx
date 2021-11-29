@@ -4,13 +4,30 @@ import React, { createContext, useState } from 'react'
 
 export const AppContext = createContext()
 
-const MyContext = ({ children }) => {
-  const [test, setTest] = useState(true) //this isnt useful now its just as a place holder for a context or state}
+export default ({ children }) => {
+  const [Loading, setLoading] = useState(true)
+  const [wstatus, setWstatus] = useState('home')
 
+  const status = {
+    home: 'A step towards a better future',
+    physio: 'Physiotherapist mode loading',
+    patient: 'Patient mode loading',
+  }
+
+  const loadData = async () => {
+    await new Promise((r) => setTimeout(r, 3000))
+    setLoading(false)
+  }
+
+  const providerValue = {
+    Loading,
+    setLoading,
+    wstatus,
+    setWstatus,
+    loadData,
+    status,
+  }
   return (
-    <AppContext.Provider value={[test, setTest]}>
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={providerValue}>{children}</AppContext.Provider>
   )
 }
-export default MyContext

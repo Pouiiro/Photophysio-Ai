@@ -1,18 +1,33 @@
-import React from 'react'
-import ButtonDeclaration from 'Components/common/buttons'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import styled from 'styled-components'
+import Vision from 'Components/vision/vision'
+import { AppContext } from 'Providers/AppContext'
+import FadeIn from 'react-fade-in'
+import MyLink from 'Components/common/buttons/navButton'
+
 const Physio = () => {
+  const { setLoading, setWstatus } = useContext(AppContext)
   return (
-    <div>
-      <h1>Physiotherapist</h1>
-      <Link to='./Patient'>
-        <ButtonDeclaration back='Patient' />
-      </Link>
-      <Link to='/'>
-        <ButtonDeclaration back='Home' />
-      </Link>
-    </div>
+    <>
+      <Vision />
+      <MyDiv>
+        <FadeIn>
+          <MyLink
+            onClick={() => {
+              setWstatus('home')
+              setLoading(true)
+            }}
+            to='/'
+          >
+            Home
+          </MyLink>
+        </FadeIn>
+      </MyDiv>
+    </>
   )
 }
-
+const MyDiv = styled.div`
+  text-align: center;
+  margin-top: 5vh;
+`
 export default Physio
