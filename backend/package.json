@@ -1,0 +1,22 @@
+{
+    "name": "Teachablemachine2",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "server": "node index.js",
+        "client": "npm start --prefix client",
+        "dev": "concurrently \" npm run server \" \" npm run client \""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@sashido/teachablemachine-node": "^1.2.2",
+        "concurrently": "^6.0.0",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "semantic-ui-css": "^2.4.1",
+        "semantic-ui-react": "^2.0.3"
+    }
+}
