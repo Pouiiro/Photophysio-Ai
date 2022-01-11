@@ -1,0 +1,4 @@
+-Tracking functionality
+-Refactor
+-Introduce more exercises
+-Connect to the cloud
