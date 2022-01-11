@@ -25,6 +25,7 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-webcam": "^6.0.0",
+    "recharts": "^2.1.8",
     "styled-components": "^5.3.3",
     "svelte-convert": "^1.0.1",
     "web-vitals": "^1.1.2"

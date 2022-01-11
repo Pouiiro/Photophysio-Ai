@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const MyBtn = styled.a`
+  cursor: pointer;
   text-decoration: none;
   color: black;
   font-weight: 400;

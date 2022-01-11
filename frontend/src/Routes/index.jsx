@@ -16,8 +16,8 @@ const Routes = () => {
     <BrowserRouter>
       <Header />
       <Route path='/' exact component={Home} />
-      <Route path='/Patient' component={Patient} />
-      <Route path='/Physiotherapist' component={Physio} />
+      <Route path='/Patient' component={Physio} />
+      <Route path='/Physiotherapist' component={Patient} />
     </BrowserRouter>
   )
 }

@@ -7,7 +7,8 @@ export const AppContext = createContext()
 export default ({ children }) => {
   const [Loading, setLoading] = useState(true)
   const [wstatus, setWstatus] = useState('home')
-
+  const [exercise, SetExercise] = useState(1)
+  const [canvawii, setCanvawii] = useState(false)
   const status = {
     home: 'A step towards a better future',
     physio: 'Physiotherapist mode loading',
@@ -19,6 +20,17 @@ export default ({ children }) => {
     setLoading(false)
   }
 
+  const SetCanvas = () => {
+    return (
+      <>
+        <div className='canvo'>
+          <canvas id='canvas'></canvas>
+        </div>
+        <div id='label-container' className='laberu'></div>
+      </>
+    )
+  }
+
   const providerValue = {
     Loading,
     setLoading,
@@ -26,6 +38,11 @@ export default ({ children }) => {
     setWstatus,
     loadData,
     status,
+    exercise,
+    SetExercise,
+    SetCanvas,
+    canvawii,
+    setCanvawii,
   }
   return (
     <AppContext.Provider value={providerValue}>{children}</AppContext.Provider>
